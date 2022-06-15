@@ -1,0 +1,86 @@
+body {
+  display: flex;
+}
+ #home{
+   background-color: rgba(0,0,0,0.7);
+ }
+ 
+ #actors{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: 300px;
+  height: 800px;
+  border: solid black 2px;
+  background-color: #228be6;
+}
+
+#auditionees > ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  list-style: none;
+}
+
+h4{
+  background-color: #ced4da;
+  width: 7rem;
+  margin: 0;
+}
+
+#roles {
+  margin: 2rem
+}
+
+#auditionees{
+  width:200px;
+  color: #ced4da;
+  font-family: 'Gill Sans'
+}
+
+#shot {
+  left: 20%;
+  margin: 1rem;
+  height: 1rem;
+  width: 2rem;
+  background-color: rgb(254, 212, 0);
+}
+
+#camera {
+  display: flex;
+  align-content: center;
+  height: 6rem;
+  width: 7rem;
+  background-color: #228be6;
+  border: solid black 1px;
+}
+#camera > div {
+  height: 3rem;
+  width: 3rem;
+  margin: 1.5rem;
+  border: solid black 2px;
+  background-color: #ced4da;
+  border-radius: 3rem;
+}
+
+
+.tripod {
+  display: flex;
+  margin: 2rem;
+  width: 1rem;
+  height: 15rem;
+}
+
+
+.table {
+  margin: 4rem;
+  background-color: #228be6;
+}
+
+.table-head {
+  background-color: #ced4da;
+}
+
+
+
