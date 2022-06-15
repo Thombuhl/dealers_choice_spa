@@ -31,19 +31,33 @@ router.post("/assign_auditionee_role", async (req, res, next) => {
     if (!roleId || !auditioneeId) {
       throw Error("Missing Required Params");
     }
-    // const roleIdExistis = await auditionee.findOne({
-    //   where: { roleId: roleId },
-    // });
-
-    await auditionee.update(
-      { roleId },
-      {
-        where: {
-          id: auditioneeId,
-        },
-      }
-    );
-    res.sendStatus(204);
+    const roleIdExist = await auditionee.findOne({
+      where: { roleId: roleId },
+    });
+    const actorIdExist = await role.findOne({
+      where: { auditioneeId: auditioneeId },
+    });
+    if (roleIdExist && actorIdExist) {
+      throw Error("Already assigned");
+    } else {
+      await auditionee.update(
+        { roleId },
+        {
+          where: {
+            id: auditioneeId,
+          },
+        }
+      );
+      await role.update(
+        { auditioneeId },
+        {
+          where: {
+            id: roleId,
+          },
+        }
+      );
+      res.sendStatus(204);
+    }
   } catch (err) {
     next(err);
   }

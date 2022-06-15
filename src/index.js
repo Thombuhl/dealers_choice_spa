@@ -2,10 +2,45 @@ const axios = require("axios");
 
 const auditionee = document.getElementById("auditionees");
 const role = document.getElementById("movie-roles");
+const tableNameRow = document.getElementById("actor-name");
+const tableRoleRow = document.getElementById("actor-role");
 
 const state = {};
 
 //RENDER
+const renderTable = () => {
+  uncastedPeople();
+  movieRoles();
+  let names = state.people;
+  names = names
+    .map((person_with_role) => {
+      if (person_with_role.roleId) {
+        return `
+        <tr>
+         <td>${person_with_role.name}</td>
+        </tr>
+      `;
+      }
+    })
+    .join("");
+  tableNameRow.innerHTML = names;
+
+  let roles = state.roles;
+  console.log(roles);
+  roles = roles
+    .map((role_with_person) => {
+      if (role_with_person.auditioneeId) {
+        return `
+        <tr>
+          <td>${role_with_person.rolename}</td>
+        </tr>
+    `;
+      }
+    })
+    .join("");
+  tableRoleRow.innerHTML = roles;
+};
+
 const renderUncastedPeople = () => {
   const names = state.people
     .map((person) => {
@@ -71,8 +106,7 @@ trigger.addEventListener("click", async () => {
       auditioneeId: assignedTalentId,
       roleId: state.finalistRole,
     });
-    state.finalistRole = "";
-    renderUncastedPeople();
+    renderTable();
   } catch (e) {
     console.log(e);
   }

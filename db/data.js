@@ -5,7 +5,7 @@ const { connect, auditionee, role } = models;
 //create potential cast.
 const createPeople = () => {
   let people = [];
-  for (let p = 0; p < 25; p++) {
+  for (let p = 0; p < 5; p++) {
     people.push({
       name: `${faker.name.firstName()} ${faker.name.lastName()}`,
       age: Math.floor(Math.random() * (60 - 18) + 18),
@@ -16,7 +16,7 @@ const createPeople = () => {
 };
 const createRoles = () => {
   let roles = [];
-  for (let r = 0; r < 28; r++) {
+  for (let r = 0; r < 5; r++) {
     roles.push({
       rolename: `${faker.name.jobTitle()}`,
       age: Math.floor(Math.random() * (60 - 18) + 18),
